@@ -26,6 +26,7 @@ import { Slider } from '@/components/ui/slider'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Input } from '@/components/ui/input'
 import gsap from 'gsap'
+import { getTemplateImage } from '@/lib/templateImages'
 
 // Types
 interface Sticker {
@@ -872,7 +873,7 @@ function App() {
     templateImg.onload = () => {
       ctx.drawImage(templateImg, 0, 0, canvas.width, canvas.height)
     }
-    templateImg.src = selectedTemplate.src
+    templateImg.src = getTemplateImage(selectedTemplate.src.split('/').pop() || '')
     
   }, [capturedPhotos, stickers, texts, selectedTemplate])
 
@@ -1045,7 +1046,7 @@ function App() {
                 <div className="bg-white rounded-2xl p-3 shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
                   <div className="aspect-[3/4] bg-gradient-to-br from-pink-50 to-purple-50 rounded-xl overflow-hidden mb-2">
                     <img 
-                      src={template.src} 
+                      src={getTemplateImage(template.src.split('/').pop() || '')} 
                       alt={template.name}
                       className="w-full h-full object-contain"
                     />
@@ -1319,7 +1320,7 @@ function App() {
                 
                 {/* Template Overlay */}
                 <img
-                  src={selectedTemplate.src}
+                  src={getTemplateImage(selectedTemplate.src.split('/').pop() || '')}
                   alt="Template"
                   className="absolute inset-0 w-full h-full object-contain pointer-events-none"
                   style={{ zIndex: 50 }}
