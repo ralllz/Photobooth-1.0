@@ -251,7 +251,7 @@
 }
 
 .filter-preview.active {
-  outline: 3px solid #FFB6C1;
+  ring: 3px solid #FFB6C1;
   transform: scale(1.1);
 }
 
@@ -334,8 +334,8 @@
 
 /* Selection Ring */
 .ring-kawaii {
-  outline: 3px solid #FFB6C1;
-  outline-offset: 2px;
+  ring: 3px solid #FFB6C1;
+  ring-offset: 2px;
 }
 
 /* Particle Effects */
@@ -420,8 +420,9 @@
 
 /* Focus Styles */
 .focus-kawaii:focus {
-  outline: 3px solid #FFB6C1;
-  outline-offset: 2px;
+  outline: none;
+  ring: 3px solid #FFB6C1;
+  ring-offset: 2px;
 }
 
 /* Disabled Styles */
