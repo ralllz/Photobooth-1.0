@@ -26,7 +26,6 @@ import { Slider } from '@/components/ui/slider'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Input } from '@/components/ui/input'
 import gsap from 'gsap'
-import { getTemplateImage } from '@/lib/templateImages'
 
 // Types
 interface Sticker {
@@ -873,7 +872,7 @@ function App() {
     templateImg.onload = () => {
       ctx.drawImage(templateImg, 0, 0, canvas.width, canvas.height)
     }
-    templateImg.src = getTemplateImage(selectedTemplate.src.split('/').pop() || '')
+    templateImg.src = selectedTemplate.src
     
   }, [capturedPhotos, stickers, texts, selectedTemplate])
 
@@ -1046,11 +1045,10 @@ function App() {
                 <div className="bg-white rounded-2xl p-3 shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
                   <div className="aspect-[3/4] bg-gradient-to-br from-pink-50 to-purple-50 rounded-xl overflow-hidden mb-2">
                     <img 
-                      src={getTemplateImage(template.src.split('/').pop() || '')} 
+                      src={template.src} 
                       alt={template.name}
                       className="w-full h-full object-contain"
                       crossOrigin="anonymous"
-                      onError={(e) => { (e.target as any).src = '/templates/' + template.src.split('/').pop(); }}
                     />
                   </div>
                   <p className="text-center text-purple-700 font-semibold text-sm">{template.name}</p>
@@ -1322,7 +1320,7 @@ function App() {
                 
                 {/* Template Overlay */}
                 <img
-                  src={getTemplateImage(selectedTemplate.src.split('/').pop() || '')}
+                  src={selectedTemplate.src}
                   alt="Template"
                   className="absolute inset-0 w-full h-full object-contain pointer-events-none"
                   crossOrigin="anonymous"
