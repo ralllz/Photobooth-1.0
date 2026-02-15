@@ -1049,6 +1049,8 @@ function App() {
                       src={getTemplateImage(template.src.split('/').pop() || '')} 
                       alt={template.name}
                       className="w-full h-full object-contain"
+                      crossOrigin="anonymous"
+                      onError={(e) => { (e.target as any).src = '/templates/' + template.src.split('/').pop(); }}
                     />
                   </div>
                   <p className="text-center text-purple-700 font-semibold text-sm">{template.name}</p>
@@ -1323,6 +1325,7 @@ function App() {
                   src={getTemplateImage(selectedTemplate.src.split('/').pop() || '')}
                   alt="Template"
                   className="absolute inset-0 w-full h-full object-contain pointer-events-none"
+                  crossOrigin="anonymous"
                   style={{ zIndex: 50 }}
                 />
                 
